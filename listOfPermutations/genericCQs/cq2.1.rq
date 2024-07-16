@@ -1,1 +1,6 @@
+# C.Q 2.1: How many permutations does this list of permutations have?
 
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+SELECT (COUNT  (?perm) as ?numPerms) WHERE {
+     $this$ bag:hasItem/bag:itemContent ?perm
+}
