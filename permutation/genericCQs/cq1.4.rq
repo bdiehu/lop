@@ -1,0 +1,8 @@
+# C.Q 1.4: Which is the position of element x in this permutation?
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+SELECT (COUNT (?item) AS ?pos)  WHERE{
+    $this$ bag:hasItem ?item .
+    ?item list:nextItem*/bag:itemContent $x$                       
+}
