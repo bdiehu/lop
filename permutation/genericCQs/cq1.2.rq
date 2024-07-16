@@ -1,0 +1,6 @@
+# C.Q 1.2: How many elements does this permutation have?
+
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+SELECT (COUNT (?elem) AS ?numElems) WHERE{
+    $this$ bag:hasItem/bag:itemContent ?elem
+}
