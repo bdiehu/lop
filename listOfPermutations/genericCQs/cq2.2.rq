@@ -1,0 +1,6 @@
+# C.Q 2.2: Which are the elements of the permutations of this list of permutations?
+
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+SELECT DISTINCT ?elem WHERE {
+     $this$ bag:hasItem/bag:itemContent/bag:hasItem/bag:itemContent ?elem
+}
