@@ -1,0 +1,33 @@
+@prefix bag: <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix lop: <http://bdi.si.ehu.eus/bdi/ontologies/LOP/lop#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix list: <http://www.ontologydesignpatterns.org/cp/owl/list.owl#> .
+@prefix perm: <http://bdi.si.ehu.eus/bdi/ontologies/LOP/permutation#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+
+perm:NoRepeatedElemShape
+  a sh:NodeShape ;
+  sh:targetClass perm:Permutation ;
+  sh:property [
+    sh:path (<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent>) ;
+    sh:severity sh:Violation ;
+    sh:sparql [
+      a sh:SPARQLConstraint ;   
+      sh:message "There cannot be repeated elements in a permutation: {?repContent} is repeated." ;
+      sh:prefixes bag:, list: ;
+      sh:select """
+        SELECT $this ?repContent
+        WHERE {
+            $this <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> ?item .
+            ?item <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent> ?repContent .
+            ?item <http://www.ontologydesignpatterns.org/cp/owl/list.owl#nextItem>+/<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent> ?repContent .					
+        }
+      """ ;
+    ] ;
+  ] .
