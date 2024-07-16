@@ -1,0 +1,12 @@
+# C.Q 1.3: Which is the i-th element in this permutation?
+
+SELECT ?elem  WHERE{   
+    {SELECT ?elem (COUNT (?x) AS ?pos) WHERE{           
+            $this$ bag:hasItem ?x.
+            ?y bag:itemContent ?elem .
+            ?y list:previousItem* ?x.
+    }
+    GROUP BY ?elem       
+    }
+    FILTER (?pos=$i$)   
+}
