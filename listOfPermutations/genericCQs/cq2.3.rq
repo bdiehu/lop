@@ -1,0 +1,16 @@
+# C.Q 2.3: Which is the position of element x in the i-th permutation of the list of permutations?
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+SELECT (COUNT (?item) as ?posElem) where{ 
+    ?perm bag:hasItem ?item .
+    ?item list:nextItem*/bag:itemContent $x$ .
+    {SELECT ?perm (COUNT (?item1) as ?posPerm) where{           
+            $this$ bag:hasItem ?item1.
+            ?item2 bag:itemContent ?perm .
+            ?item2 list:previousItem* ?item1.
+    }
+    group by ?perm       
+    }
+    FILTER (?posPerm=$i$)   
+}
