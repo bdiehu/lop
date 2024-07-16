@@ -1,0 +1,10 @@
+# C.Q 1.5: Obtain the elements of this permutation sorted by position.
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+SELECT  (COUNT (?item) AS ?pos) ?elem  WHERE{
+    $this$ bag:hasItem ?item .
+    ?item list:nextItem*/bag:itemContent ?elem                    
+}
+GROUP BY ?elem
+ORDER BY ?pos
