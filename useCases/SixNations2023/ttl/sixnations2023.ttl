@@ -1,0 +1,413 @@
+@prefix : <http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/> .
+@prefix bag: <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix lop: <http://bdi.si.ehu.eus/bdi/ontologies/LOP/lop#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix list: <http://www.ontologydesignpatterns.org/cp/owl/list.owl#> .
+@prefix perm: <http://bdi.si.ehu.eus/bdi/ontologies/LOP/permutation#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/> .
+
+<http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/> rdf:type owl:Ontology ;
+                                                                  owl:imports <http://bdi.si.ehu.eus/bdi/ontologies/LOP/lop> ;
+                                                                  <http://purl.org/dc/terms/license> "BDI Interoperable Databases Group - University of the Basque Country UPV/EHU"^^xsd:string ;
+                                                                  rdfs:comment "Sample application of ODP ListOfPermutations"^^xsd:string .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/Round
+:Round rdf:type owl:Class ;
+       rdfs:subClassOf perm:Permutation .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/SixNationsChampionship
+:SixNationsChampionship rdf:type owl:Class ;
+                        rdfs:subClassOf lop:ListOfPermutations ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty bag:hasItem ;
+                                          owl:allValuesFrom [ rdf:type owl:Restriction ;
+                                                              owl:onProperty bag:itemContent ;
+                                                              owl:someValuesFrom :Round
+                                                            ]
+                                        ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/Round_1
+:Round_1 rdf:type owl:NamedIndividual ,
+                  :Round ;
+         bag:hasItem :be1.1 ,
+                     :be1.2 ,
+                     :be1.3 ,
+                     :be1.4 ,
+                     :be1.5 ,
+                     :be1.6 ;
+         list:hasFirstItem :be1.1 ;
+         list:hasLastItem :be1.6 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/Round_2
+:Round_2 rdf:type owl:NamedIndividual ,
+                  :Round ;
+         bag:hasItem :be2.1 ,
+                     :be2.2 ,
+                     :be2.3 ,
+                     :be2.4 ,
+                     :be2.5 ,
+                     :be2.6 ;
+         list:hasFirstItem :be2.1 ;
+         list:hasLastItem :be2.6 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/Round_3
+:Round_3 rdf:type owl:NamedIndividual ,
+                  :Round ;
+         bag:hasItem :be3.1 ,
+                     :be3.2 ,
+                     :be3.3 ,
+                     :be3.4 ,
+                     :be3.5 ,
+                     :be3.6 ;
+         list:hasFirstItem :be3.1 ;
+         list:hasLastItem :be3.6 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/Round_4
+:Round_4 rdf:type owl:NamedIndividual ,
+                  :Round ;
+         bag:hasItem :be4.1 ,
+                     :be4.2 ,
+                     :be4.3 ,
+                     :be4.4 ,
+                     :be4.5 ,
+                     :be4.6 ;
+         list:hasFirstItem :be4.1 ;
+         list:hasLastItem :be4.6 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/Round_5
+:Round_5 rdf:type owl:NamedIndividual ,
+                  :Round ;
+         bag:hasItem :be5.1 ,
+                     :be5.2 ,
+                     :be5.3 ,
+                     :be5.4 ,
+                     :be5.5 ,
+                     :be5.6 ;
+         list:hasFirstItem :be5.1 ;
+         list:hasLastItem :be5.6 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be1.1
+:be1.1 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Ireland_national_rugby_union_team ;
+       list:nextItem :be1.2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be1.2
+:be1.2 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Scotland_national_rugby_union_team ;
+       list:nextItem :be1.3 ;
+       list:previousItem :be1.1 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be1.3
+:be1.3 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:France_national_rugby_union_team ;
+       list:nextItem :be1.4 ;
+       list:previousItem :be1.2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be1.4
+:be1.4 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Italy_national_rugby_union_team ;
+       list:nextItem :be1.5 ;
+       list:previousItem :be1.3 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be1.5
+:be1.5 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:England_national_rugby_union_team ;
+       list:nextItem :be1.6 ;
+       list:previousItem :be1.4 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be1.6
+:be1.6 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Wales_national_rugby_union_team ;
+       list:previousItem :be1.5 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be2.1
+:be2.1 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Ireland_national_rugby_union_team ;
+       list:nextItem :be2.2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be2.2
+:be2.2 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Scotland_national_rugby_union_team ;
+       list:nextItem :be2.3 ;
+       list:previousItem :be2.1 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be2.3
+:be2.3 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:England_national_rugby_union_team ;
+       list:nextItem :be2.4 ;
+       list:previousItem :be2.2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be2.4
+:be2.4 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:France_national_rugby_union_team ;
+       list:nextItem :be2.5 ;
+       list:previousItem :be2.3 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be2.5
+:be2.5 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Italy_national_rugby_union_team ;
+       list:nextItem :be2.6 ;
+       list:previousItem :be2.4 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be2.6
+:be2.6 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Wales_national_rugby_union_team ;
+       list:previousItem :be2.5 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be3.1
+:be3.1 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Ireland_national_rugby_union_team ;
+       list:nextItem :be3.2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be3.2
+:be3.2 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Scotland_national_rugby_union_team ;
+       list:nextItem :be3.3 ;
+       list:previousItem :be3.1 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be3.3
+:be3.3 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:England_national_rugby_union_team ;
+       list:nextItem :be3.4 ;
+       list:previousItem :be3.2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be3.4
+:be3.4 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:France_national_rugby_union_team ;
+       list:nextItem :be3.5 ;
+       list:previousItem :be3.3 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be3.5
+:be3.5 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Italy_national_rugby_union_team ;
+       list:nextItem :be3.6 ;
+       list:previousItem :be3.4 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be3.6
+:be3.6 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Wales_national_rugby_union_team ;
+       list:previousItem :be3.5 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be4.1
+:be4.1 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Ireland_national_rugby_union_team ;
+       list:nextItem :be4.2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be4.2
+:be4.2 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:France_national_rugby_union_team ;
+       list:nextItem :be4.3 ;
+       list:previousItem :be4.1 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be4.3
+:be4.3 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Scotland_national_rugby_union_team ;
+       list:nextItem :be4.4 ;
+       list:previousItem :be4.2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be4.4
+:be4.4 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:England_national_rugby_union_team ;
+       list:nextItem :be4.5 ;
+       list:previousItem :be4.3 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be4.5
+:be4.5 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Wales_national_rugby_union_team ;
+       list:nextItem :be4.6 ;
+       list:previousItem :be4.4 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be4.6
+:be4.6 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Italy_national_rugby_union_team ;
+       list:previousItem :be4.5 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be5.1
+:be5.1 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Ireland_national_rugby_union_team ;
+       list:nextItem :be5.2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be5.2
+:be5.2 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:France_national_rugby_union_team ;
+       list:nextItem :be5.3 ;
+       list:previousItem :be5.1 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be5.3
+:be5.3 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Scotland_national_rugby_union_team ;
+       list:nextItem :be5.4 ;
+       list:previousItem :be5.2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be5.4
+:be5.4 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:England_national_rugby_union_team ;
+       list:nextItem :be5.5 ;
+       list:previousItem :be5.3 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be5.5
+:be5.5 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Wales_national_rugby_union_team ;
+       list:nextItem :be5.6 ;
+       list:previousItem :be5.4 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/be5.6
+:be5.6 rdf:type owl:NamedIndividual ,
+                list:ListItem ;
+       bag:itemContent dbr:Italy_national_rugby_union_team ;
+       list:previousItem :be5.5 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/bj1
+:bj1 rdf:type owl:NamedIndividual ,
+              list:ListItem ;
+     bag:itemContent :Round_1 ;
+     list:nextItem :bj2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/bj2
+:bj2 rdf:type owl:NamedIndividual ,
+              list:ListItem ;
+     bag:itemContent :Round_2 ;
+     list:nextItem :bj3 ;
+     list:previousItem :bj1 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/bj3
+:bj3 rdf:type owl:NamedIndividual ,
+              list:ListItem ;
+     bag:itemContent :Round_3 ;
+     list:nextItem :bj4 ;
+     list:previousItem :bj2 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/bj4
+:bj4 rdf:type owl:NamedIndividual ,
+              list:ListItem ;
+     bag:itemContent :Round_4 ;
+     list:nextItem :bj5 ;
+     list:previousItem :bj3 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/bj5
+:bj5 rdf:type owl:NamedIndividual ,
+              list:ListItem ;
+     bag:itemContent :Round_5 ;
+     list:previousItem :bj4 .
+
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/sixnations2023
+:sixnations2023 rdf:type owl:NamedIndividual ,
+                         :SixNationsChampionship ;
+                bag:hasItem :bj1 ,
+                            :bj2 ,
+                            :bj3 ,
+                            :bj4 ,
+                            :bj5 ;
+                list:hasFirstItem :bj1 ;
+                list:hasLastItem :bj5 .
+
+
+###  http://dbpedia.org/resource/England_national_rugby_union_team
+dbr:England_national_rugby_union_team rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource/France_national_rugby_union_team
+dbr:France_national_rugby_union_team rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource/Ireland_national_rugby_union_team
+dbr:Ireland_national_rugby_union_team rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource/Italy_national_rugby_union_team
+dbr:Italy_national_rugby_union_team rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource/Scotland_national_rugby_union_team
+dbr:Scotland_national_rugby_union_team rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource/Wales_national_rugby_union_team
+dbr:Wales_national_rugby_union_team rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
