@@ -1,0 +1,13 @@
+# C.Q 2.5: In how many permutations of the list of permutations is element x in the i-th position?
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+SELECT  (COUNT (?pos) as ?num) WHERE {
+    SELECT (COUNT  (?item) as ?pos) WHERE {
+       $this$ bag:hasItem/bag:itemContent ?perm .
+       ?perm bag:hasItem ?item .
+       ?item list:nextItem*/bag:itemContent $x$
+    }
+    GROUP BY ?perm
+    HAVING (COUNT  (?item)=$i$)
+}
