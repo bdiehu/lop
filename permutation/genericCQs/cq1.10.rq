@@ -1,0 +1,11 @@
+# C.Q 1.10: Is element x before element y in this permutation?
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+ASK  WHERE{
+ $this$ bag:hasItem ?item1 .
+ ?item1 bag:itemContent $x$ .
+ $this$ bag:hasItem ?item2 .
+ ?item2 bag:itemContent $y$ .
+ ?item1 list:nextItem+ ?item2
+}
