@@ -1,0 +1,21 @@
+@prefix :        <http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/> .
+@prefix bag:     <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#> .
+@prefix dash:    <http://datashapes.org/dash#> .
+@prefix dbr:     <http://dbpedia.org/resource/> .
+@prefix graphql: <http://datashapes.org/graphql#> .
+@prefix list:    <http://www.ontologydesignpatterns.org/cp/owl/list.owl#> .
+@prefix lop:     <http://bdi.si.ehu.eus/bdi/ontologies/LOP/lop#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix perm:    <http://bdi.si.ehu.eus/bdi/ontologies/LOP/permutation#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix swa:     <http://topbraid.org/swa#> .
+@prefix tosh:    <http://topbraid.org/tosh#> .
+@prefix xml:     <http://www.w3.org/XML/1998/namespace#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+[ rdf:type     sh:ValidationReport ;
+  sh:conforms  true
+] .
+
