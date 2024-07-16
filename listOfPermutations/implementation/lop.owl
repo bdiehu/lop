@@ -1,0 +1,66 @@
+@prefix : <http://bdi.si.ehu.eus/bdi/ontologies/LOP/lop#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://bdi.si.ehu.eus/bdi/ontologies/LOP/lop> .
+
+<http://bdi.si.ehu.eus/bdi/ontologies/LOP/lop> rdf:type owl:Ontology ;
+                                                owl:imports <http://bdi.si.ehu.eus/bdi/ontologies/LOP/permutation> ;
+                                                <http://purl.org/dc/terms/license> "http://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+                                                <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> "How many permutations does this list of permutations have?"^^xsd:string ,
+                                                                                                                                          "In how many permutations of the list of permutations is element x before/after element y?"^^xsd:string ,
+                                                                                                                                          "In how many permutations of the list of permutations is element x in the i-th position?"^^xsd:string ,
+                                                                                                                                          "In which permutations of the list of permutations is element x before/after element y?"^^xsd:string ,
+                                                                                                                                          "Which are the elements of the permutations of this list of permutations?"^^xsd:string ,
+                                                                                                                                          "Which is the position of element x in all the permutations of the list of permutations?"^^xsd:string ,
+                                                                                                                                          "Which is the position of element x in the i-th permutation of the list of permutations?"^^xsd:string ;
+                                                <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor> "BDI Interoperable Databases Group - University of the Basque Country UPV/EHU"^^xsd:string ;
+                                                <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasIntent> "To represent lists of permutations"^^xsd:string ;
+                                                <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isSpecializationOf> "http://www.ontologydesignpatterns.org/cp/owl/list.owl"^^xsd:string ;
+                                                <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#relatedCPs> "http://bdi.si.ehu.eus/bdi/ontologies/LOP/permutation"^^xsd:string ,
+                                                                                                                                  "http://www.ontologydesignpatterns.org/cp/owl/bag.owl"^^xsd:string ,
+                                                                                                                                  "http://www.ontologydesignpatterns.org/cp/owl/set.owl"^^xsd:string ;
+                                                owl:versionInfo "1.0.0"^^xsd:string .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/lop#ListOfPermutations
+:ListOfPermutations rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( <http://www.ontologydesignpatterns.org/cp/owl/list.owl#List>
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> ;
+                                                                 owl:allValuesFrom [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent> ;
+                                                                                     owl:allValuesFrom <http://bdi.si.ehu.eus/bdi/ontologies/LOP/permutation#Permutation>
+                                                                                   ]
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                    rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/list.owl#List> ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty [ owl:inverseOf <http://www.w3.org/ns/shacl#targetClass>
+                                                     ] ;
+                                      owl:someValuesFrom [ rdf:type owl:Class ;
+                                                           owl:oneOf ( :noMissingElemShape
+                                                                     )
+                                                         ]
+                                    ] ;
+                    rdfs:comment "List of Permutations - An ordered array of permutations."^^xsd:string ;
+                    rdfs:label "list of permutations"^^xsd:string .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://bdi.si.ehu.eus/bdi/ontologies/LOP/lop#noMissingElemShape
+:noMissingElemShape rdf:type owl:NamedIndividual ,
+                             <http://www.w3.org/ns/shacl#NodeShape> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
