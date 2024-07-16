@@ -1,0 +1,12 @@
+# C.Q 2.9: In which permutations of the list of permutations is element x after element y?
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+SELECT ?perm  WHERE{
+    $this$ bag:hasItem/bag:itemContent ?perm .
+    ?perm bag:hasItem ?item1 .
+    ?item1 bag:itemContent $x$ .
+    ?perm bag:hasItem ?item2 .
+    ?item2 bag:itemContent $y$ .
+    ?item1 list:previousItem+ ?item2
+}
