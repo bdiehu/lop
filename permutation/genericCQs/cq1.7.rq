@@ -1,0 +1,9 @@
+# C.Q 1.7: Which elements precede element x in this permutation, either directly or indirectly?
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+SELECT ?elem WHERE{
+    $this$ bag:hasItem ?item .
+    $x$ ^bag:itemContent/list:previousItem+ ?item.
+    ?item bag:itemContent ?elem
+}
