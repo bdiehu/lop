@@ -1,0 +1,11 @@
+# C.Q 2.4: Which is the position of element x in all the permutations of the list of permutations?
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+SELECT ?perm (COUNT (?item) as ?pos) WHERE {
+    $this$ bag:hasItem/bag:itemContent ?perm .
+    ?perm bag:hasItem ?item .
+    ?item list:nextItem*/bag:itemContent $x$                    
+}
+GROUP BY ?perm
+ORDER BY ?perm
