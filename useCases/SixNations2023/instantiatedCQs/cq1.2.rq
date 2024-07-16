@@ -1,0 +1,7 @@
+# C.Q 1.2: How many teams does Round 1 have?
+
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+PREFIX :<http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/>
+SELECT (COUNT (?team) AS ?numTeams) WHERE{
+    :Round_1 bag:hasItem/bag:itemContent ?team
+}

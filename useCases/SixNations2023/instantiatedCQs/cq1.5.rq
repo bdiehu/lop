@@ -1,0 +1,11 @@
+# C.Q 1.5: Obtain the teams of Round 1 sorted by position
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+PREFIX :<http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/>
+SELECT  (COUNT (?item) as ?pos) ?team  where{
+    :Round_1 bag:hasItem ?item .
+    ?item list:nextItem*/bag:itemContent ?team                    
+}
+GROUP BY ?team
+ORDER BY ?pos

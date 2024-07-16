@@ -1,0 +1,11 @@
+# C.Q 1.8: Which team was right after team England in Round 1?
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+PREFIX dbr:<http://dbpedia.org/resource/>
+PREFIX :<http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/>
+SELECT ?team WHERE{
+    :Round_1 bag:hasItem ?item .
+    dbr:England_national_rugby_union_team ^bag:itemContent/list:nextItem ?item.
+    ?item bag:itemContent ?team
+}

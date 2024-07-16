@@ -1,0 +1,13 @@
+# C.Q 1.10: Was team England before team France in Round 1?
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+PREFIX dbr:<http://dbpedia.org/resource/>
+PREFIX :<http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/>
+ASK  WHERE{
+ :Round_1 bag:hasItem ?item1 .
+ ?item1 bag:itemContent dbr:England_national_rugby_union_team .
+ :Round_1 bag:hasItem ?item2 .
+ ?item2 bag:itemContent dbr:France_national_rugby_union_team .
+ ?item1 list:nextItem+ ?item2
+}

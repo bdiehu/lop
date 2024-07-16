@@ -1,0 +1,16 @@
+# C.Q 2.5: In how many rounds of fixtures was team England in 3rd position during the 2023 Six Nations Championship?
+
+PREFIX list:<http://www.ontologydesignpatterns.org/cp/owl/list.owl#>
+PREFIX bag:<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>
+PREFIX dbr:<http://dbpedia.org/resource/>
+PREFIX :<http://bdi.si.ehu.eus/bdi/ontologies/LOP/tests/sixnations2023/>
+SELECT  (COUNT (?pos) AS ?num) WHERE {
+    SELECT (COUNT  (?item) AS ?pos) WHERE {
+       :sixnations2023 bag:hasItem/bag:itemContent ?round .
+       ?round bag:hasItem ?item .
+       ?item list:nextItem*/bag:itemContent 
+                dbr:England_national_rugby_union_team
+        }
+    GROUP BY ?round
+    HAVING (COUNT  (?item)=3)
+}
